@@ -27,8 +27,8 @@ services:
       DD_DATABASE_URL: ${DD_DATABASE_URL:-mysql://defectdojo:defectdojo@mysql:3306/defectdojo}
       DD_CELERY_BROKER_USER: ${DD_CELERY_BROKER_USER:-guest}
       DD_CELERY_BROKER_PASSWORD: ${DD_CELERY_BROKER_USER:-guest}
-      DD_SECRET_KEY: ${DD_SECRET_KEY:-hhZCp@D28z!n@NED*yB!ROMt+WzsY*iq}
-      DD_CREDENTIAL_AES_256_KEY: ${DD_CREDENTIAL_AES_256_KEY:-&91a*agLqesc*0DJ+2*bAbsUZfR*4nLw}
+      DD_SECRET_KEY: ${DD_SECRET_KEY:}
+      DD_CREDENTIAL_AES_256_KEY: ${DD_CREDENTIAL_AES_256_KEY:}
   celerybeat:
     image: defectdojo/defectdojo-django:latest
     depends_on:
@@ -39,8 +39,8 @@ services:
       DD_DATABASE_URL: ${DD_DATABASE_URL:-mysql://defectdojo:defectdojo@mysql:3306/defectdojo}
       DD_CELERY_BROKER_USER: ${DD_CELERY_BROKER_USER:-guest}
       DD_CELERY_BROKER_PASSWORD: ${DD_CELERY_BROKER_USER:-guest}
-      DD_SECRET_KEY: ${DD_SECRET_KEY:-hhZCp@D28z!n@NED*yB!ROMt+WzsY*iq}
-      DD_CREDENTIAL_AES_256_KEY: ${DD_CREDENTIAL_AES_256_KEY:-&91a*agLqesc*0DJ+2*bAbsUZfR*4nLw}
+      DD_SECRET_KEY: ${DD_SECRET_KEY:}
+      DD_CREDENTIAL_AES_256_KEY: ${DD_CREDENTIAL_AES_256_KEY:}
   celeryworker:
     image: defectdojo/defectdojo-django:latest
     depends_on:
@@ -51,8 +51,8 @@ services:
       DD_DATABASE_URL: ${DD_DATABASE_URL:-mysql://defectdojo:defectdojo@mysql:3306/defectdojo}
       DD_CELERY_BROKER_USER: ${DD_CELERY_BROKER_USER:-guest}
       DD_CELERY_BROKER_PASSWORD: ${DD_CELERY_BROKER_USER:-guest}
-      DD_SECRET_KEY: ${DD_SECRET_KEY:-hhZCp@D28z!n@NED*yB!ROMt+WzsY*iq}
-      DD_CREDENTIAL_AES_256_KEY: ${DD_CREDENTIAL_AES_256_KEY:-&91a*agLqesc*0DJ+2*bAbsUZfR*4nLw}
+      DD_SECRET_KEY: ${DD_SECRET_KEY:}
+      DD_CREDENTIAL_AES_256_KEY: ${DD_CREDENTIAL_AES_256_KEY:}
   initializer:
     image: defectdojo/defectdojo-django:latest
     depends_on:
@@ -65,16 +65,16 @@ services:
       DD_ADMIN_FIRST_NAME: ${DD_ADMIN_FIRST_NAME:-Admin}
       DD_ADMIN_LAST_NAME: ${DD_ADMIN_LAST_NAME:-User}
       DD_INITIALIZE: ${DD_INITIALIZE:-true}
-      DD_SECRET_KEY: ${DD_SECRET_KEY:-hhZCp@D28z!n@NED*yB!ROMt+WzsY*iq}
-      DD_CREDENTIAL_AES_256_KEY: ${DD_CREDENTIAL_AES_256_KEY:-&91a*agLqesc*0DJ+2*bAbsUZfR*4nLw}
+      DD_SECRET_KEY: ${DD_SECRET_KEY:}
+      DD_CREDENTIAL_AES_256_KEY: ${DD_CREDENTIAL_AES_256_KEY:}
   mysql:
     image: mysql:5.7.27@sha256:540488d8f0e04c1077d17934d1c1511fe417e2221dff508ce4621f5efe6131db
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
       DD_DATABASE_URL: ${DD_DATABASE_URL:-mysql://defectdojo:defectdojo@mysql:3306/defectdojo}
       MYSQL_USER: ${DD_DATABASE_USER:-defectdojo}
-      MYSQL_PASSWORD: ${DD_DATABASE_PASSWORD:-defectdojo}
-      MYSQL_DATABASE: ${DD_DATABASE_NAME:-defectdojo}
+      MYSQL_PASSWORD: ${DD_DATABASE_PASSWORD:}
+      MYSQL_DATABASE: ${DD_DATABASE_NAME:}
     command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
     volumes:
        - defectdojo_data:/var/lib/mysql
